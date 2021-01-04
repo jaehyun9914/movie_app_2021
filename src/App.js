@@ -1,37 +1,29 @@
 import React from 'react';
 
-function Food({name, picture}){
-  return (
-  <div>
-    <h2>I like {name}</h2>
-    <img src = {picture}/>
-  </div>
-  );
-}
+class App extends React.Component{
 
-const foodLike = [
-  {
-    name: 'Kimchi',
-    image: 'https://cdn.imweb.me/thumbnail/20200415/6b6e035658bac.png'
-  },
-  {
-    name: 'Pasta',
-    image: 'https://t1.daumcdn.net/liveboard/dailylife/8defeeef58a04d3888ddfe03b5722000.jpg'
-  },
-  {
-    name: 'Jamon',
-    image: 'https://img-cf.kurly.com/shop/data/goodsview/20180827/gv10000030667_1.jpg'
+  state = {
+    count:0,
+  };
+
+  add = () => {
+    this.setState(current =>(
+      {count:current.count+1,}));
+  };
+  minus = () => {
+    this.setState(current =>(
+      {count:current.count-1,}));
+  };
+
+  render(){
+    return (
+    <div>
+      <h1>The number is : {this.state.count}</h1>
+      <button onClick={this.add}>Add</button>
+      <button onClick={this.minus}>Minus</button>
+    </div>
+    );
   }
-];
-
-function App() {
-  return (
-  <div>
-    {foodLike.map(dish => (
-      <Food name={dish.name} picture={dish.image}/>
-      ))}
-  </div>
-  );
 }
 
 export default App;
